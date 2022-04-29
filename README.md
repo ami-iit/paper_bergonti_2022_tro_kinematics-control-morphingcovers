@@ -13,7 +13,7 @@ Paper Name, vol. 1, no. 1, pp. 1-6, Month Year, doi: 10.1093/ajae/aaq063_
 
 <p align="center">
 
-https://user-images.githubusercontent.com/6505998/134696331-6335943b-cd03-41fc-802d-e93347226e9c.mp4
+https://user-images.githubusercontent.com/38210073/164407553-1441ec3d-ad4e-48bb-8b21-d0e7a38d153c.mp4
 
 </p>
 
@@ -24,7 +24,7 @@ https://user-images.githubusercontent.com/6505998/134696331-6335943b-cd03-41fc-8
 <div align="center">
   <a href="#installation"><b>Installation</b></a> |
   <a href="http://dx.doi.org/10.1093/ajae/aaq063"><b>Paper</b></a> |
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><b>Video</b></a>
+  <a href="https://youtu.be/kMfXb2xqGn4"><b>Video</b></a>
 </div>
 
 ### Installation
