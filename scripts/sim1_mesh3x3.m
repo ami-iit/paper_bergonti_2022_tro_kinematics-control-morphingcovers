@@ -14,7 +14,9 @@ config.only_controller       = 1;
 %%
 
 model = mystica.model.getModelCoverSquareLinks('n',3,'m',3','restConfiguration','flat','linkDimension',0.0482);
-stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model);
+stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',4);
+stgs.desiredShape.fun = @(x,y,t) -5*x^2 -5*y^2;
+stgs.integrator.dxdtOpts.assumeConstant = true;
 data  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
 
 if stgs.visualizer.run
