@@ -78,7 +78,9 @@ function [model,sensitivity,genAlgrthm] = selectMotorPositioning(input)
         stateKin.clearProperties();
     end
     sensitivity.clearProperties();
-    stgs.saving.workspace.name = [stgs.saving.workspace.name(1:end-4),'_motorPos.mat'];
-    save(stgs.saving.workspace.name)
+    if stgs.saving.workspace.run
+        stgs.saving.workspace.name = [stgs.saving.workspace.name(1:end-4),'_motorPos.mat'];
+        save(stgs.saving.workspace.name)
+    end
 
 end
