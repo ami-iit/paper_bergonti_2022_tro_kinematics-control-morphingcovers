@@ -33,7 +33,7 @@ if config.run_only_controller
     stgs.saving.workspace.name = 'initSim1';
 else
     % 1) create model.
-    model = mystica.model.getModelCoverSquareLinks('n',3,'m',3','restConfiguration','flat','linkDimension',0.0482);
+    model = mystica.model.getModelCoverSquareLinks('n',3,'m',3,'restConfiguration','flat','linkDimension',0.0482);
     % 2) evaluate morphing cover initial configuration.
     % initial configuration is computed running a controlled simulation starting from flat configuration. `mBodyTwist_0` is the control variable.
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',4);
