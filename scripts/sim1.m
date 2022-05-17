@@ -30,7 +30,7 @@ config.run_only_controller   = 0;
 if config.run_only_controller
     % load model with motors and morphing cover initial configuration.
     load('initSim1.mat','model','mBodyPosQuat_0')
-    stgs.saving.workspace.name('initSim1')
+    stgs.saving.workspace.name = 'initSim1';
 else
     % 1) create model.
     model = mystica.model.getModelCoverSquareLinks('n',3,'m',3','restConfiguration','flat','linkDimension',0.0482);
@@ -68,14 +68,14 @@ stgs.visualizer.desiredShape.normal.dim                  = 0.016;
 stgs.visualizer.cameraView.mBodySimulation.values        = [-37.5,30];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
 stgs.visualizer.cameraView.initialRotation.values        = [0,90];
-stgs.visualizer.cameraView.initialRotation.durationTotal = 13;
-stgs.visualizer.cameraView.initialRotation.pause.start   = 2;
-stgs.visualizer.cameraView.initialRotation.pause.end     = 7;
+stgs.visualizer.cameraView.initialRotation.durationTotal = 3;
+stgs.visualizer.cameraView.initialRotation.pause.start   = 0;
+stgs.visualizer.cameraView.initialRotation.pause.end     = 0;
 stgs.visualizer.cameraView.finalRotation.run             = 1;
 stgs.visualizer.cameraView.finalRotation.values          = [45,20];
-stgs.visualizer.cameraView.finalRotation.durationTotal   = 6;
-stgs.visualizer.cameraView.finalRotation.pause.start     = 1;
-stgs.visualizer.cameraView.finalRotation.pause.end       = 2;
+stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
+stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
+stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
 % visualize simulation

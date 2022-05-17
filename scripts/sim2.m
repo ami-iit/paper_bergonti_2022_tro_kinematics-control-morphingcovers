@@ -18,7 +18,7 @@ run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
 % config.simulation_with_noise
 %   - true  => simulation with Gaussian noise in the estimated state used by the controller.
 %   - false => ideal simulation
-config.simulation_with_noise = 1;
+config.simulation_with_noise = 0;
 
 % config.run_only_controller
 %   - true  => load model with motors and its initial configuration.
@@ -30,14 +30,14 @@ config.run_only_controller   = 0;
 if config.run_only_controller
     % load model with motors and morphing cover initial configuration.
     load('initSim2.mat','model','mBodyPosQuat_0')
-    stgs.saving.workspace.name('initSim2')
+    stgs.saving.workspace.name = 'initSim2';
 else
     % 1) create model.
-    model = mystica.model.getModelCoverSquareLinks('n',3,'m',3','restConfiguration','flat','linkDimension',0.0482);
+    model = mystica.model.getModelCoverSquareLinks('n',8,'m',8','restConfiguration','flat','linkDimension',0.0482);
     % 2) evaluate morphing cover initial configuration.
     % initial configuration is computed running a controlled simulation starting from flat configuration. `mBodyTwist_0` is the control variable.
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',4);
-    stgs.desiredShape.fun = @(x,y,t) -5*x.^2 -5*y.^2;
+    stgs.desiredShape.fun = @(x,y,t) -2*x.^2 -2*y.^2;
     stgs.integrator.dxdtOpts.assumeConstant = true;
     stgs.saving.workspace.run = 0;
     [data,stateKin]  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
@@ -52,30 +52,25 @@ end
 %% Simulation
 
 % define stgs
-stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',8);
-stgs.desiredShape.fun = @(x,y,t) 5.*x.*y.*cos(y/2);
+stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',40);
+stgs.desiredShape.fun = @(x,y,t) cos(t/8 + 10*x - 20*y)/40 - cos(t/8)/40 + cos(t/8 - 10*x + 2)/40 - cos(t/8 + 2)/40;
 stgs.integrator.dxdtOpts.assumeConstant = true;
 if config.simulation_with_noise
-    stgs.noise.inputCompression.bool = 1;
+    stgs.noise.errorStateEstimation.bool = 1;
 end
 stgs.saving.workspace.run                                = 0;
 stgs.visualizer.origin.dimCSYS                           = 0.01;
-stgs.visualizer.mBody.bodyCSYS.show                      = 1;
-stgs.visualizer.mBody.bodyCSYS.dim                       = 0.025;
-stgs.visualizer.desiredShape.normal.show                 = 1;
-stgs.visualizer.desiredShape.normal.color                = [0.5, 0.7, 0.9];
-stgs.visualizer.desiredShape.normal.dim                  = 0.016;
 stgs.visualizer.cameraView.mBodySimulation.values        = [-37.5,30];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
 stgs.visualizer.cameraView.initialRotation.values        = [0,90];
-stgs.visualizer.cameraView.initialRotation.durationTotal = 13;
-stgs.visualizer.cameraView.initialRotation.pause.start   = 2;
-stgs.visualizer.cameraView.initialRotation.pause.end     = 7;
+stgs.visualizer.cameraView.initialRotation.durationTotal = 3;
+stgs.visualizer.cameraView.initialRotation.pause.start   = 0;
+stgs.visualizer.cameraView.initialRotation.pause.end     = 0;
 stgs.visualizer.cameraView.finalRotation.run             = 1;
 stgs.visualizer.cameraView.finalRotation.values          = [45,20];
-stgs.visualizer.cameraView.finalRotation.durationTotal   = 6;
-stgs.visualizer.cameraView.finalRotation.pause.start     = 1;
-stgs.visualizer.cameraView.finalRotation.pause.end       = 2;
+stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
+stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
+stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
 % visualize simulation
