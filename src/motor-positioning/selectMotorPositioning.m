@@ -47,7 +47,6 @@ function [model,sensitivity,genAlgrthm] = selectMotorPositioning(input)
         'combinationDecRange',[1 size(stateKin.nullJc_jointsAngVel_PJ,1)]);
 
     genAlgrthm.runAlgorithm()
-    genAlgrthm.plotStatsFitValues()
 
     %% Sensitivity Analysis
 
@@ -61,7 +60,6 @@ function [model,sensitivity,genAlgrthm] = selectMotorPositioning(input)
         'regTermDampPInv',0);
 
     sensitivity.runAlgorithm()
-    sensitivity.plotStats()
 
     %% Update model
 

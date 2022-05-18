@@ -18,7 +18,7 @@ run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
 % config.simulation_with_noise
 %   - true  => simulation with Gaussian noise to motor velocity
 %   - false => ideal simulation
-config.simulation_with_noise = 1;
+config.simulation_with_noise = 0;
 
 % config.run_only_controller
 %   - true  => load model with motors and its initial configuration.

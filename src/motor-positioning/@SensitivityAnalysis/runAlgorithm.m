@@ -48,7 +48,6 @@ function runAlgorithm(obj)
             nameTTF = mystica.utils.createTimeTrackerFile(nameTTF,'SA',(indexCombination/obj.stgs.numberCombinations)*100,100);
         end
     end
-    delete(nameTTF)
 
     obj.stats.divergenceDeterminant = sum(abs(obj.stats.dDeterminant_dAngle),2);
 
