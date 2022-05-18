@@ -40,7 +40,7 @@ else
         mystica.viz.visualizeKinAbs('model',model,'data',data,'stgs',stgs);
     end
     % 3) solve the motors placement problem.
-    [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs);
+    [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs,'GA_limitGenerationNumber',1e7);
     mBodyPosQuat_0 = data.mBodyPosQuat_0(:,end);
 end
 
