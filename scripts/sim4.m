@@ -18,7 +18,7 @@ run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
 % config.run_only_controller
 %   - true  => load model with motors and its initial configuration.
 %   - false => create model, evaluate the initial configuration, and solve the motors placement problem.
-config.run_only_controller   = 0;
+config.run_only_controller   = 1;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
 
@@ -66,7 +66,7 @@ stgs.visualizer.cameraView.finalRotation.values          = [90,0];
 stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
 stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
 stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
-stgs.visualizer.background{1}.stlName = 'leg.stl';
+stgs.visualizer.background{1}.stlName = 'ironcubLeg.stl';
 stgs.visualizer.background{1}.tform_0_originSTL = mystica.rbm.getTformGivenPosRotm(zeros(3,1),mystica.rbm.getRotmGivenEul('rx',0));
 stgs.visualizer.background{1}.scale     = [1 1 1]/1e3;
 stgs.visualizer.background{1}.FaceColor = [0.7 0.7 0.7];

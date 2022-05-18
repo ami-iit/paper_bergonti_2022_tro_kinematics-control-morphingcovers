@@ -18,7 +18,7 @@ run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
 % config.run_only_controller
 %   - true  => load model with motors and its initial configuration.
 %   - false => create model, evaluate the initial configuration, and solve the motors placement problem.
-config.run_only_controller   = 0;
+config.run_only_controller   = 1;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
 
