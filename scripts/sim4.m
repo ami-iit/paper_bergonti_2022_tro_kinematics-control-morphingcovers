@@ -11,7 +11,8 @@ clc
 close all
 fclose('all');
 
-run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
+src_full_path = fullfile(fileparts(mfilename('fullpath')),'..','src');
+run(fullfile(src_full_path,'setup_sim.m'))
 
 %% User Parameters
 
@@ -24,7 +25,7 @@ config.run_only_controller   = 1;
 
 if config.run_only_controller
     % load model with motors and morphing cover initial configuration.
-    load('initSim4.mat','model','mBodyPosQuat_0')
+    load(fullfile(src_full_path,'datasets','initSim4.mat'),'model','mBodyPosQuat_0')
     stgs.saving.workspace.name = 'initSim4';
 else
     % 1) create model and state object.
@@ -66,7 +67,7 @@ stgs.visualizer.cameraView.finalRotation.values          = [90,0];
 stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
 stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
 stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
-stgs.visualizer.background{1}.stlName = 'ironcubLeg.stl';
+stgs.visualizer.background{1}.stlName = fullfile(src_full_path,'meshes','ironcubLeg.stl');
 stgs.visualizer.background{1}.tform_0_originSTL = mystica.rbm.getTformGivenPosRotm(zeros(3,1),mystica.rbm.getRotmGivenEul('rx',0));
 stgs.visualizer.background{1}.scale     = [1 1 1]/1e3;
 stgs.visualizer.background{1}.FaceColor = [0.7 0.7 0.7];

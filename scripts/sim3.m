@@ -11,7 +11,8 @@ clc
 close all
 fclose('all');
 
-run(fullfile(fileparts(mfilename('fullpath')),'..','src','setup_sim.m'))
+src_full_path = fullfile(fileparts(mfilename('fullpath')),'..','src');
+run(fullfile(src_full_path,'setup_sim.m'))
 
 %% User Parameters
 
@@ -24,7 +25,7 @@ config.run_only_controller   = 1;
 
 if config.run_only_controller
     % load model with motors and morphing cover initial configuration.
-    load('initSim3.mat','model','mBodyPosQuat_0')
+    load(fullfile(src_full_path,'datasets','initSim3.mat'),'model','mBodyPosQuat_0')
     stgs.saving.workspace.name = 'initSim3';
 else
     % 1) create model.
