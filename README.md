@@ -38,13 +38,15 @@ This paper takes a step to provide humanoid robots with adaptive morphology abil
   git clone https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers.git
   git clone https://github.com/ami-iit/mystica.git
   ```
+  [mystica](https://github.com/ami-iit/mystica/) is a matlab library to simulate the kinematics and dynamics of multibody systems.
 2. Run in **matlab** the function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) stored in [`mystica`](https://github.com/ami-iit/mystica/):
-``` matlab
-install('env_name','imorph')
-```
+  ``` matlab
+  install('env_name','imorph')
+  ```
 The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) downloads [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge). [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge) is a package manager that downloads and configures our dependencies in conda enviroment called `imorph`.
 
 ### Reproducing the experiments
+
 
 
 ### Citing this work
