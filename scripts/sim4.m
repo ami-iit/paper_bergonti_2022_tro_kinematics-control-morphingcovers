@@ -36,8 +36,6 @@ else
     % 2) evaluate morphing cover initial configuration.
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',0.02);
     stgs.desiredShape.fun = @(x,y,t) 2*x.^2 + 2*y.^2;
-    stgs.integrator.dxdtOpts.assumeConstant = true;
-    stgs.saving.workspace.run = 0;
     [data,stateKin]  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
     % 3) solve the motors placement problem.
     [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs);
@@ -66,22 +64,14 @@ f4 = @(x,y) -3.5*(y.^2);
 stgs.desiredShape.fun = @(x,y,t) (t<=t1)*f1(x,y) + (t>t1 & t<=t2)*f2(x,y) + (t>t2 & t<=t3)*f3(x,y) + (t>t3)*f4(x,y);
 stgs.desiredShape.fun = @(x,y,t) stgs.desiredShape.fun(x,y,t)-stgs.desiredShape.fun(0,0,t)+0.055; clear f1 f2 f3 f4 t1 t2 t3;
 % stgs: integrator/state/noise
-stgs.integrator.dxdtOpts.assumeConstant = true;
 stgs.stateKin.nullSpace.toleranceRankRevealing = [10 1e-8];
-stgs.saving.workspace.run = 0;
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
 stgs.visualizer.cameraView.initialRotation.values        = [0,90];
-stgs.visualizer.cameraView.initialRotation.durationTotal = 3;
-stgs.visualizer.cameraView.initialRotation.pause.start   = 0;
-stgs.visualizer.cameraView.initialRotation.pause.end     = 0;
 stgs.visualizer.cameraView.finalRotation.run             = 1;
 stgs.visualizer.cameraView.finalRotation.values          = [90,0];
-stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
-stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
-stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
 stgs.visualizer.background{1}.stlName = 'iRonCub_Leg.stl';
 stgs.visualizer.background{1}.tform_0_originSTL = mystica.rbm.getTformGivenPosRotm(zeros(3,1),mystica.rbm.getRotmGivenEul('rx',0));
 stgs.visualizer.background{1}.scale     = [1 1 1]/1e3;

@@ -37,8 +37,6 @@ else
     % initial configuration is computed running a controlled simulation starting from flat configuration. `mBodyTwist_0` is the control variable.
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',4);
     stgs.desiredShape.fun = @(x,y,t) 2*(x-23/50).^2-529/1250;
-    stgs.integrator.dxdtOpts.assumeConstant = true;
-    stgs.saving.workspace.run = 0;
     [data,stateKin]  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
     if stgs.visualizer.run
         mystica.viz.visualizeKinAbs('model',model,'data',data,'stgs',stgs);
@@ -64,22 +62,13 @@ stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be 
 stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up to model limit (i.e. 50*180/pi).
 % stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) ((2^(1/2)*y)/2-(2^(1/2)*x)/2+23/50).^2/2 - ((2^(1/2)*x)/2+(2^(1/2)*y)/2+23/50).^2/2;
-% stgs: integrator/state/noise
-stgs.integrator.dxdtOpts.assumeConstant = true;
-stgs.saving.workspace.run = 0;
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
 stgs.visualizer.cameraView.initialRotation.values        = [180,90];
-stgs.visualizer.cameraView.initialRotation.durationTotal = 3;
-stgs.visualizer.cameraView.initialRotation.pause.start   = 0;
-stgs.visualizer.cameraView.initialRotation.pause.end     = 0;
 stgs.visualizer.cameraView.finalRotation.run             = 1;
 stgs.visualizer.cameraView.finalRotation.values          = [-37.5,30];
-stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
-stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
-stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
 
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');

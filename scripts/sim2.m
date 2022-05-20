@@ -42,8 +42,6 @@ else
     % initial configuration is computed running a controlled simulation starting from flat configuration. `mBodyTwist_0` is the control variable.
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',4);
     stgs.desiredShape.fun = @(x,y,t) -2*x.^2 -2*y.^2;
-    stgs.integrator.dxdtOpts.assumeConstant = true;
-    stgs.saving.workspace.run = 0;
     [data,stateKin]  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
     if stgs.visualizer.run
         mystica.viz.visualizeKinAbs('model',model,'data',data,'stgs',stgs);
@@ -70,24 +68,18 @@ stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be 
 % stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) cos(t/8 + 10*x - 20*y)/40 - cos(t/8)/40 + cos(t/8 - 10*x + 2)/40 - cos(t/8 + 2)/40;
 % stgs: integrator/state/noise
-stgs.integrator.dxdtOpts.assumeConstant = true;
 stgs.noise.errorStateEstimation.bool = config.simulation_with_noise;
-stgs.saving.workspace.run = 0;
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [-37.5,30];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
 stgs.visualizer.cameraView.initialRotation.values        = [0,90];
-stgs.visualizer.cameraView.initialRotation.durationTotal = 3;
-stgs.visualizer.cameraView.initialRotation.pause.start   = 0;
-stgs.visualizer.cameraView.initialRotation.pause.end     = 0;
 stgs.visualizer.cameraView.finalRotation.run             = 1;
 stgs.visualizer.cameraView.finalRotation.values          = [45,20];
-stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
-stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
-stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
+
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
+
 % visualize simulation
 if stgs.visualizer.run
     mystica.viz.visualizeKinRel('model',model,'data',data,'stgs',stgs);
