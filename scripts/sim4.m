@@ -63,8 +63,6 @@ f3 = @(x,y) 3*(y.^2);               t3 = 25;
 f4 = @(x,y) -3.5*(y.^2);
 stgs.desiredShape.fun = @(x,y,t) (t<=t1)*f1(x,y) + (t>t1 & t<=t2)*f2(x,y) + (t>t2 & t<=t3)*f3(x,y) + (t>t3)*f4(x,y);
 stgs.desiredShape.fun = @(x,y,t) stgs.desiredShape.fun(x,y,t)-stgs.desiredShape.fun(0,0,t)+0.055; clear f1 f2 f3 f4 t1 t2 t3;
-% stgs: integrator/state/noise
-stgs.stateKin.nullSpace.toleranceRankRevealing = [10 1e-8];
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];

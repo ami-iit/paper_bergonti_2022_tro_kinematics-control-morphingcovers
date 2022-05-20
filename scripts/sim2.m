@@ -68,7 +68,9 @@ stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be 
 % stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) cos(t/8 + 10*x - 20*y)/40 - cos(t/8)/40 + cos(t/8 - 10*x + 2)/40 - cos(t/8 + 2)/40;
 % stgs: integrator/state/noise
-stgs.noise.errorStateEstimation.bool = config.simulation_with_noise;
+stgs.noise.errorStateEstimation.bool         = config.simulation_with_noise;
+stgs.noise.errorStateEstimation.maxValue     = 0.05/stgs.integrator.maxTimeStep*pi/180;
+stgs.noise.errorStateEstimation.probMaxValue = 0.05;
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [-37.5,30];
