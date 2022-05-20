@@ -64,7 +64,7 @@ cd scripts
 run('sim1')
 ```
 
-If you open the script, you can modify the `config.simulation_with_noise` parameter deciding wether to apply noise. Instead, the parameter `config.run_only_controller` allows you to choose if you want to run only the controller without evaluating a new motor placement.
+If you open the script, you can modify the `config.simulation_with_noise` parameter deciding whether to apply noise. Instead, the parameter `config.run_only_controller` allows you to choose if you want to run only the controller without evaluating a new motor placement.
 
 | # | mesh | script | result |
 | - | - | - | - |
