@@ -55,14 +55,25 @@ end
 
 %% Simulation
 
-% define stgs
+% stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',8);
+% stgs: controller parameters
+stgs.controller.costFunction.weightTaskOrientation            = 1;
+stgs.controller.costFunction.weightTaskMinVariation           = 0;
+stgs.controller.costFunction.weightTaskMinOptiVar             = 0;
+stgs.controller.costFunction.gainLinkAngVelStarAligned        = 30;
+stgs.controller.costFunction.gainLinkAngVelStarOpposite       = 100;
+stgs.controller.costFunction.useFeedForwardTermLinkAngVelStar = 1;
+stgs.controller.constraints.limitPassiveAngVel = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up to model limit (i.e. 50*180/pi).
+% stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) 5.*x.*y.*cos(y/2);
+% stgs: integrator/state/noise
 stgs.integrator.dxdtOpts.assumeConstant = true;
-if config.simulation_with_noise
-    stgs.noise.inputCompression.bool = 1;
-end
-stgs.saving.workspace.run                                = 0;
+stgs.noise.inputCompression.bool = config.simulation_with_noise;
+stgs.saving.workspace.run = 0;
+% stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.mBody.bodyCSYS.show                      = 1;
 stgs.visualizer.mBody.bodyCSYS.dim                       = 0.025;
@@ -80,8 +91,10 @@ stgs.visualizer.cameraView.finalRotation.values          = [45,20];
 stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
 stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
 stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
+
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
+
 % visualize simulation
 if stgs.visualizer.run
     mystica.viz.visualizeKinRel('model',model,'data',data,'stgs',stgs);

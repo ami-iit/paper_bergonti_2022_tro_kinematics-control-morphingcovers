@@ -55,14 +55,25 @@ end
 
 %% Simulation
 
-% define stgs
+% stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',40);
+% stgs: controller parameters
+stgs.controller.costFunction.weightTaskOrientation            = 1;
+stgs.controller.costFunction.weightTaskMinVariation           = 0;
+stgs.controller.costFunction.weightTaskMinOptiVar             = 0;
+stgs.controller.costFunction.gainLinkAngVelStarAligned        = 30;
+stgs.controller.costFunction.gainLinkAngVelStarOpposite       = 100;
+stgs.controller.costFunction.useFeedForwardTermLinkAngVelStar = 1;
+stgs.controller.constraints.limitPassiveAngVel = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up to model limit (i.e. 50*180/pi).
+% stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) cos(t/8 + 10*x - 20*y)/40 - cos(t/8)/40 + cos(t/8 - 10*x + 2)/40 - cos(t/8 + 2)/40;
+% stgs: integrator/state/noise
 stgs.integrator.dxdtOpts.assumeConstant = true;
-if config.simulation_with_noise
-    stgs.noise.errorStateEstimation.bool = 1;
-end
-stgs.saving.workspace.run                                = 0;
+stgs.noise.errorStateEstimation.bool = config.simulation_with_noise;
+stgs.saving.workspace.run = 0;
+% stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [-37.5,30];
 stgs.visualizer.cameraView.initialRotation.run           = 1;

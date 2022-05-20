@@ -22,7 +22,7 @@ run(fullfile(src_full_path,'setup_sim.m'))
 %              if this option is true,  the running time is  ~60s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 %   - false => create model, evaluate the initial configuration, and solve the motors placement problem.
 %              if this option is false, the running time is ~160s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
-config.run_only_controller   = 1;
+config.run_only_controller   = false;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
 
@@ -46,18 +46,30 @@ end
 
 %% Simulation
 
-% define stgs
+% stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',35);
+% stgs: controller parameters
+stgs.controller.costFunction.weightTaskOrientation            = 1;
+stgs.controller.costFunction.weightTaskMinVariation           = 500;
+stgs.controller.costFunction.weightTaskMinOptiVar             = 0;
+stgs.controller.costFunction.gainLinkAngVelStarAligned        = 30;
+stgs.controller.costFunction.gainLinkAngVelStarOpposite       = 100;
+stgs.controller.costFunction.useFeedForwardTermLinkAngVelStar = 1;
+stgs.controller.constraints.limitPassiveAngVel = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up
+% stgs: desired Shape
 f1 = @(x,y) 3*(x-0.07).^2-3*(y).^2; t1 = 10;
 f2 = @(x,y) 7*(x-0.07).^2;          t2 = 15;
 f3 = @(x,y) 3*(y.^2);               t3 = 25;
 f4 = @(x,y) -3.5*(y.^2);
 stgs.desiredShape.fun = @(x,y,t) (t<=t1)*f1(x,y) + (t>t1 & t<=t2)*f2(x,y) + (t>t2 & t<=t3)*f3(x,y) + (t>t3)*f4(x,y);
 stgs.desiredShape.fun = @(x,y,t) stgs.desiredShape.fun(x,y,t)-stgs.desiredShape.fun(0,0,t)+0.055; clear f1 f2 f3 f4 t1 t2 t3;
+% stgs: integrator/state/noise
 stgs.integrator.dxdtOpts.assumeConstant = true;
 stgs.stateKin.nullSpace.toleranceRankRevealing = [10 1e-8];
-stgs.controller.costFunction.weightTaskMinVariation = 500;
 stgs.saving.workspace.run = 0;
+% stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
@@ -76,8 +88,10 @@ stgs.visualizer.background{1}.scale     = [1 1 1]/1e3;
 stgs.visualizer.background{1}.FaceColor = [0.7 0.7 0.7];
 stgs.visualizer.background{1}.EdgeColor = 'none';
 stgs.visualizer.background{1}.FaceAlpha = 0.3;
+
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
+
 % visualize simulation
 if stgs.visualizer.run
     mystica.viz.visualizeKinRel('model',model,'data',data,'stgs',stgs);

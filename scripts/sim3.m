@@ -21,8 +21,8 @@ run(fullfile(src_full_path,'setup_sim.m'))
 %   - true  => load model with motors and its initial configuration.
 %              WARNING! if this option is true,  the running time is ~10000s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 %   - false => create model, evaluate the initial configuration, and solve the motors placement problem.
-%              WARNING! if this option is false, the running time is ~600s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
-config.run_only_controller   = 1;
+%              WARNING! if this option is false, the running time is ~*********s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
+config.run_only_controller   = true;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
 
@@ -50,11 +50,24 @@ end
 
 %% Simulation
 
-% define stgs
+% stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',20);
+% stgs: controller parameters
+stgs.controller.costFunction.weightTaskOrientation            = 1;
+stgs.controller.costFunction.weightTaskMinVariation           = 0;
+stgs.controller.costFunction.weightTaskMinOptiVar             = 0;
+stgs.controller.costFunction.gainLinkAngVelStarAligned        = 30;
+stgs.controller.costFunction.gainLinkAngVelStarOpposite       = 100;
+stgs.controller.costFunction.useFeedForwardTermLinkAngVelStar = 1;
+stgs.controller.constraints.limitPassiveAngVel = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
+stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up to model limit (i.e. 50*180/pi).
+% stgs: desired Shape
 stgs.desiredShape.fun = @(x,y,t) ((2^(1/2)*y)/2-(2^(1/2)*x)/2+23/50).^2/2 - ((2^(1/2)*x)/2+(2^(1/2)*y)/2+23/50).^2/2;
+% stgs: integrator/state/noise
 stgs.integrator.dxdtOpts.assumeConstant = true;
-stgs.saving.workspace.run                                = 0;
+stgs.saving.workspace.run = 0;
+% stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
@@ -67,8 +80,10 @@ stgs.visualizer.cameraView.finalRotation.values          = [-37.5,30];
 stgs.visualizer.cameraView.finalRotation.durationTotal   = 3;
 stgs.visualizer.cameraView.finalRotation.pause.start     = 0;
 stgs.visualizer.cameraView.finalRotation.pause.end       = 0;
+
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
+
 % visualize simulation
 if stgs.visualizer.run
     mystica.viz.visualizeKinRel('model',model,'data',data,'stgs',stgs);
