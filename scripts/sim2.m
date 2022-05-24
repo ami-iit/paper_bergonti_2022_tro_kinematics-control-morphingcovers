@@ -24,9 +24,9 @@ config.simulation_with_noise = false;
 
 % config.run_only_controller
 %   - true  => load model with motors and its initial configuration.
-%              if this option is true,  the running time is ~300s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
+%              if this option is true,  the running time is ~5min with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 %   - false => create model, evaluate the initial configuration, and solve the motors placement problem.
-%              if this option is false, the running time is ~600s with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
+%              if this option is false, the running time is ~10min with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 config.run_only_controller   = true;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
