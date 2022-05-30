@@ -52,6 +52,12 @@ jobs:
         with:
           command: |
             ls
+            cd mystica
+            ls
+            cd deps
+            ls
+            setup
+            path
             run(fullfile('mystica','deps','setup'))
             run(fullfile('scripts','test_ci'))
             
