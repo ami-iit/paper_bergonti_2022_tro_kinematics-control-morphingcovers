@@ -1,0 +1,56 @@
+name: MATLAB tests
+
+on:
+  push:
+    branches:
+            - main
+            - CI
+  pull_request:
+    branches:
+            - main
+
+
+jobs:
+
+  run-matlab-test:
+
+    name: Install dependencies and run MATLAB tests
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        matlab_version: [R2020a, R2020b, R2021a, latest]
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Install MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: ${{ matrix.matlab_version }}
+
+      - name: Clone mystica
+        run: |
+          git clone https://github.com/ami-iit/mystica.git
+
+      - name: Install mystica
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            ls
+            cd mystica
+            install('env_name','imorph')
+
+      - name: Run MATLAB tests
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            ls
+            
