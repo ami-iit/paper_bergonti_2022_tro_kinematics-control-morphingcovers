@@ -26,6 +26,6 @@ function createPopulation(obj)
         end
     end
 
-    obj.updateRouletteWheel();
+    obj.updateProbabilityOfSelection();
 
 end

@@ -1,7 +1,7 @@
 function selectParents(obj)
-    rotatingWheelResults = rand(1,obj.stgs.populationSize.children);
+    vectorRandomNumbers = rand(1,obj.stgs.populationSize.children);
 
-    matrixDiff = rotatingWheelResults - obj.population.rouletteWheelCumProbability;
+    matrixDiff = vectorRandomNumbers - cumsum(obj.population.probabilityOfSelection);
     matrixDiff(matrixDiff>0) = -2;
     [~,obj.children.parentsIndexes] = max(matrixDiff);
 

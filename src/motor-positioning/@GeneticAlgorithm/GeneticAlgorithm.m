@@ -71,16 +71,15 @@ classdef GeneticAlgorithm < handle
                 obj.matrixFromCombinationBin2CombinationDec(i,(1:obj.combinationBinGeneLength)+(i-1)*obj.combinationBinGeneLength) = obj.matrixFromBinaryNumber2DecimalNumber;
             end
 
-            obj.population.combinationBin              = zeros(obj.stgs.populationSize.parents,obj.combinationBinLength);
-            obj.population.combinationDec              = zeros(obj.stgs.populationSize.parents,obj.combinationDecLength);
-            obj.population.fitValues                   = zeros(obj.stgs.populationSize.parents,1);
-            obj.population.rouletteWheel               = zeros(obj.stgs.populationSize.parents,1);
-            obj.population.rouletteWheelCumProbability = zeros(obj.stgs.populationSize.parents,1);
+            obj.population.combinationBin         = zeros(obj.stgs.populationSize.parents,obj.combinationBinLength);
+            obj.population.combinationDec         = zeros(obj.stgs.populationSize.parents,obj.combinationDecLength);
+            obj.population.fitValues              = zeros(obj.stgs.populationSize.parents,1);
+            obj.population.probabilityOfSelection = zeros(obj.stgs.populationSize.parents,1);
 
-            obj.children.combinationBin                = zeros(obj.stgs.populationSize.children,obj.combinationBinLength);
-            obj.children.combinationDec                = zeros(obj.stgs.populationSize.children,obj.combinationDecLength);
-            obj.children.parentsIndexes                = zeros(obj.stgs.populationSize.children,1);
-            obj.children.fitValues                     = zeros(obj.stgs.populationSize.children,1);
+            obj.children.combinationBin           = zeros(obj.stgs.populationSize.children,obj.combinationBinLength);
+            obj.children.combinationDec           = zeros(obj.stgs.populationSize.children,obj.combinationDecLength);
+            obj.children.parentsIndexes           = zeros(obj.stgs.populationSize.children,1);
+            obj.children.fitValues                = zeros(obj.stgs.populationSize.children,1);
 
             obj.createPopulation();
 
@@ -99,7 +98,7 @@ classdef GeneticAlgorithm < handle
 
         mergePopulations(obj,pop1,pop2)
         createPopulation(obj)
-        updateRouletteWheel(obj)
+        updateProbabilityOfSelection(obj)
         selectParents(obj)
         performSinglePointCrossover(obj)
         performMutation(obj)

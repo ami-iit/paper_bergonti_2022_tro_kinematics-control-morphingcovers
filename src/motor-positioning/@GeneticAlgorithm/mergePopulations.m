@@ -27,7 +27,7 @@ function mergePopulations(obj,pop1,pop2)
 
     populationCDafterMerge = obj.population.combinationDec;
 
-    obj.updateRouletteWheel();
+    obj.updateProbabilityOfSelection();
 
     if sum(abs(populationCDbeforeMerge-populationCDafterMerge),'all') == 0
         obj.counterConstantPopulation = obj.counterConstantPopulation + 1;
