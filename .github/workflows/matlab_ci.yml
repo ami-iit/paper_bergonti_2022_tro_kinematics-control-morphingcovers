@@ -51,6 +51,7 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            run(fullfile('mystica','deps','setup.m'))
+            ls
+            run(fullfile('mystica','deps','setup'))
             run(fullfile('scripts','test_ci'))
             

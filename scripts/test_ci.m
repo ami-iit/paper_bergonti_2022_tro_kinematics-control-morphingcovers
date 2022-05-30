@@ -28,6 +28,10 @@ stgs.desiredShape.fun = @(x,y,t) -5*x.^2 -5*y.^2;
 [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs);
 mBodyPosQuat_0 = data.mBodyPosQuat_0(:,end);
 
+%%
+
+assert(abs(det(stateKin.getZact('model',model)))>1e-5,'selected motor placement doesn''t guarantee full actuation locally')
+
 %% Simulation
 
 % stgs: get default values
