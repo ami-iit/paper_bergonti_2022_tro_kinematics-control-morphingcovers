@@ -44,7 +44,6 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            ls
             cd mystica
             install('env_name','imorph')
 
@@ -52,5 +51,6 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            ls
+            run(fullfile('mystica','deps','setup.m'))
+            run(fullfile('scripts','test_ci'))
             
