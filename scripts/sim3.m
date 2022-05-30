@@ -61,7 +61,8 @@ stgs.controller.constraints.limitPassiveAngVel = 5*pi/180;  % [rad/s] it can be 
 stgs.controller.constraints.limitMotorVel      = 5*pi/180;  % [rad/s] it can be set up to model limit (i.e. 20*180/pi).
 stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be set up to model limit (i.e. 50*180/pi).
 % stgs: desired Shape
-stgs.desiredShape.fun = @(x,y,t) ((2^(1/2)*y)/2-(2^(1/2)*x)/2+23/50).^2/2 - ((2^(1/2)*x)/2+(2^(1/2)*y)/2+23/50).^2/2;
+stgs.desiredShape.fun = @(x,y,t) (y/sqrt(2)-x/sqrt(2)+23/50).^2/2 - (x/sqrt(2)+y/sqrt(2)+23/50).^2/2;
+
 % stgs: visualizer
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
