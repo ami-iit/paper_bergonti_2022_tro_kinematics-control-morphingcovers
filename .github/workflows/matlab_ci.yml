@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         matlab_version: [R2021a, R2021b, latest]
     runs-on: ${{ matrix.os }}
     
@@ -50,17 +50,8 @@ jobs:
       - name: Test linux
         if: matrix.os == 'ubuntu-latest'
         run: |
+          pip install mamba
           /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
-
-      - name: Test windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          dir
-          cd mystica
-          cd deps
-          cd condabin
-          dir
-          mamba.bat
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
