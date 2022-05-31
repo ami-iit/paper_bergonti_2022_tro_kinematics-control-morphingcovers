@@ -21,6 +21,10 @@ jobs:
         os: [ubuntu-latest]
         matlab_version: [R2021a, R2021b, latest]
     runs-on: ${{ matrix.os }}
+    
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
 
@@ -47,7 +51,7 @@ jobs:
         run: |
           cd /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
           ls
-          ./mamba
+          mamba
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
