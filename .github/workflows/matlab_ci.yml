@@ -31,10 +31,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Install miniforge
+      - name: Setup Mambaforge
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniforge-version: latest
+            miniforge-variant: Mambaforge
+            miniforge-version: latest
+            activate-environment: anaconda-client-env
+            use-mamba: true
 
       - name: conda info
         run: |
