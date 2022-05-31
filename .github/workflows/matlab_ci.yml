@@ -56,7 +56,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           dir
-          cd mystica\deps\bin\condabin
+          cd mystica\deps\condabin
           mamba.bat
 
       - name: Run MATLAB tests
