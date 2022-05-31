@@ -50,13 +50,14 @@ jobs:
       - name: Test linux
         if: matrix.os == 'ubuntu-latest'
         run: |
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/conda
+          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
 
       - name: Test windows
         if: matrix.os == 'windows-latest'
         run: |
           dir
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/conda
+          cd mystica\deps\bin\condabin
+          mamba.bat
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
