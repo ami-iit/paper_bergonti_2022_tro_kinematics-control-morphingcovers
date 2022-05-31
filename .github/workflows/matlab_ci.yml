@@ -31,6 +31,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
+      - name: Install miniforge
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniforge-version: latest
+
+      - name: conda info
+        run: |
+          conda info
+          conda list
+          conda config --show-sources
+          conda config --show
+
       - name: Install MATLAB
         uses: matlab-actions/setup-matlab@v1
         with:
@@ -46,7 +58,7 @@ jobs:
           command: |
             cd mystica
             install('env_name','imorph')
-      
+
       - name: Test
         run: |
           cd /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
