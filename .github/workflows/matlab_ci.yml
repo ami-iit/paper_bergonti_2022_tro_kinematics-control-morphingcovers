@@ -49,8 +49,6 @@ jobs:
           cat /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
           /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -c "import mamba"
           echo $?
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -c "import mambasdad"
-          echo $?
           echo "/home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/condabin/mamba"
           /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/condabin/mamba
           echo "/home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -m pip list --verbose"
