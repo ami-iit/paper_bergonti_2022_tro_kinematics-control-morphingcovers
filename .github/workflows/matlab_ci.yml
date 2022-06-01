@@ -44,13 +44,22 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
+
+            [~, uname] = system('uname')
+            % Remove newline
+            uname = strip(uname)
+            [~, uname_m] = system('uname -m')
+            % Remove newline
+            uname_m = strip(uname_m)
+            mambaforge_installer_name = sprintf('Mambaforge-%s-%s.sh', uname, uname_m)
+
             cd mystica
             install('env_name','imorph')
 
       - name: Test linux
         if: matrix.os == 'ubuntu-latest'
         run: |
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
+          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
