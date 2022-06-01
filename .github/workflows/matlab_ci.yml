@@ -37,6 +37,9 @@ jobs:
           git clone https://github.com/ami-iit/mystica.git
 
           echo $PATH
+          echo "pwd"
+          pwd
+          echo "mkdir"
           mkdir /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
           echo "/home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/" >> $PATH
           echo $?
