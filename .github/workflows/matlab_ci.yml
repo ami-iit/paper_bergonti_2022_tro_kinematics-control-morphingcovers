@@ -44,9 +44,9 @@ jobs:
           mkdir /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
           cd  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
           pwd
-          echo  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/ >> $PATH
+          echo  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/ >> $GITHUB_PATH
           echo $?
-          echo $PATH
+          echo $GITHUB_PATH
 
       - name: Install mystica
         uses: matlab-actions/run-command@v1
