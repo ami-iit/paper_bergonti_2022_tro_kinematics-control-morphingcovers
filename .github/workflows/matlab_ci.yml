@@ -51,7 +51,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           pip install mamba
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
+          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
