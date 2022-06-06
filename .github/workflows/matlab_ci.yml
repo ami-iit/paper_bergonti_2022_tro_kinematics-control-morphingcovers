@@ -39,6 +39,8 @@ jobs:
             websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/onelineinstallswitchtomamba/scripts/install_robotology_packages.m')
             install_robotology_packages
             robotology_setup
+            pos = iDynTree.Position()
+            vec = yarp.Vector()
 
       - name: Clone mystica
         run: |
