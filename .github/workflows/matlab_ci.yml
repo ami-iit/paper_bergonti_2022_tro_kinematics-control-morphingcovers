@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         matlab_version: [R2021a, R2021b, latest]
     runs-on: ${{ matrix.os }}
 
@@ -31,17 +31,6 @@ jobs:
         uses: matlab-actions/setup-matlab@v1
         with:
           release: ${{ matrix.matlab_version }}
-
-      - name: Test Robotology
-        uses: matlab-actions/run-command@v1
-        with:
-          command: |
-            websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/onelineinstallswitchtomamba/scripts/install_robotology_packages.m')
-            install_robotology_packages
-            system("cat  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/robotology-matlab/condabin/mamba")
-            robotology_setup
-            pos = iDynTree.Position()
-            vec = yarp.Vector()
 
       - name: Clone mystica
         run: |
@@ -58,13 +47,6 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            ls
-            cd mystica
-            ls
-            cd deps
-            ls
-            setup
-            path
             run(fullfile('mystica','deps','setup'))
             run(fullfile('scripts','test_ci'))
             
