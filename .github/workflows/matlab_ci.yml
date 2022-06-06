@@ -32,23 +32,17 @@ jobs:
         with:
           release: ${{ matrix.matlab_version }}
 
+      - name: Test Robotology
+        uses: matlab-actions/run-command@v1
+        with:
+          command: |
+            websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/master/scripts/install_robotology_packages.m')
+            install_robotology_packages
+            robotology_setup
+
       - name: Clone mystica
         run: |
           git clone https://github.com/ami-iit/mystica.git
-
-          echo $PATH
-          echo "pwd"
-          pwd
-          echo "mkdir"
-          mkdir /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/
-          mkdir /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
-          cd  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/
-          pwd
-          echo  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/ >> $GITHUB_PATH
-          echo $?
-          echo $GITHUB_PATH
-          cd /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/
-          rm -rf /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/
 
       - name: Install mystica
         uses: matlab-actions/run-command@v1
@@ -56,23 +50,6 @@ jobs:
           command: |
             cd mystica
             install('env_name','imorph')
-
-      - name: Test linux
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          echo "bin"
-          cat /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
-          echo "condabin"
-          cat /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/condabin/mamba
-
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -c "import mamba"
-          echo $?
-          echo "/home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/condabin/mamba"
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/condabin/mamba
-          echo "/home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -m pip list --verbose"
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/python -m pip list --verbose
-
-          /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/mystica/deps/bin/mamba
 
       - name: Run MATLAB tests
         uses: matlab-actions/run-command@v1
