@@ -28,8 +28,7 @@ stgs.desiredShape.fun = @(x,y,t) -5*x.^2 -5*y.^2;
 [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs);
 mBodyPosQuat_0 = data.mBodyPosQuat_0(:,end);
 
-%%
-
+% Verify result motors placement problem
 assert(abs(det(stateKin.getZact('model',model)))>1e-5,'selected motor placement doesn''t guarantee full actuation locally')
 
 %% Simulation
@@ -52,5 +51,6 @@ stgs.desiredShape.fun = @(x,y,t) 5.*x.*y.*cos(y/2);
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
 
+% Verify results kinematic simulation
 assert(max(abs(data.errorPositionNormals(:,end)))<1e-2,'errorPositionNormals is bigger than expected')
 assert(max(abs(data.errorOrientationNormals(:,end)))<10,'errorOrientationNormals is bigger than expected')
