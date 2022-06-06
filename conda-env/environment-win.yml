@@ -1,0 +1,36 @@
+name: imorph
+channels:
+  - robotology
+  - conda-forge
+dependencies:
+  - bzip2=1.0.8=h8ffe710_4
+  - ca-certificates=2022.5.18.1=h5b45459_0
+  - casadi=3.5.5=py310h2d2b175_9
+  - casadi-matlab-bindings=3.5.5.2=h0e60522_53
+  - ipopt=3.14.6=hf6be2e5_0
+  - libblas=3.9.0=14_win64_openblas
+  - libcblas=3.9.0=14_win64_openblas
+  - libffi=3.4.2=h8ffe710_5
+  - libflang=5.0.0=h6538335_20180525
+  - liblapack=3.9.0=14_win64_openblas
+  - libopenblas=0.3.20=pthreads_hc469a61_0
+  - libosqp=0.6.2=h0e60522_3
+  - libzlib=1.2.12=h8ffe710_0
+  - llvm-meta=5.0.0=0
+  - metis=5.1.0=h0e60522_1006
+  - mumps-seq=5.2.1=hb3f9cae_11
+  - numpy=1.22.4=py310hed7ac4c_0
+  - openmp=5.0.0=vc14_1
+  - openssl=3.0.3=h8ffe710_0
+  - pip=22.1.2=pyhd8ed1ab_0
+  - python=3.10.4=hcf16a7b_0_cpython
+  - python_abi=3.10=2_cp310
+  - setuptools=62.3.2=py310h5588dad_0
+  - sqlite=3.38.5=h8ffe710_0
+  - tk=8.6.12=h8ffe710_0
+  - tzdata=2022a=h191b570_0
+  - ucrt=10.0.20348.0=h57928b3_0
+  - vc=14.2=hb210afc_6
+  - vs2015_runtime=14.29.30037=h902a5da_6
+  - wheel=0.37.1=pyhd8ed1ab_0
+  - xz=5.2.5=h62dcd97_1
