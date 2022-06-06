@@ -58,4 +58,3 @@ jobs:
           command: |
             run(fullfile('..','..','mystica','deps','setup'))
             run(fullfile('scripts','test_ci'))
-            
