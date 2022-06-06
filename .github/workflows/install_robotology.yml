@@ -36,6 +36,8 @@ jobs:
 
       - name: Clone Robotology
         run: |
+          cd ..
+          cd ..
           git clone https://github.com/robotology/robotology-superbuild.git
           cd robotology-superbuild
           git checkout onelineinstallswitchtomamba
@@ -44,6 +46,8 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
+            cd ..
+            cd ..
             cd robotology-superbuild
             cd scripts
             install_robotology_packages()
@@ -59,6 +63,8 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
+            cd ..
+            cd ..
             cd robotology-superbuild
             cd scripts
             robotology_setup
