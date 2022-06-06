@@ -3,8 +3,7 @@ name: Test One-line Installation of Robotology MATLAB/Simulink Packages
 on:
   push:
     branches:
-      - master
-      - CI
+      - main
   pull_request:
     branches:
             - main
