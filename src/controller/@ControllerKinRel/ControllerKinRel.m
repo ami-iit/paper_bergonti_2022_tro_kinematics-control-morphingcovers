@@ -50,7 +50,7 @@ classdef ControllerKinRel < mystica.controller.Base
                 obj.motorsAngVel = sol.value(obj.csdSy.motorsAngVel);
             catch
                 warning('QP failed')
-                obj.motorsAngVel = obj.motorsAngVel*0;
+                obj.motorsAngVel = obj.motorsAngVel;
             end
             motorsAngVel = obj.motorsAngVel;
 
