@@ -44,9 +44,8 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            pwd
-            cd scripts
             cd robotology-superbuild
+            cd scripts
             install_robotology_packages()
             system("cat  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/robotology-superbuild/scripts/robotology-matlab/condabin/mamba")
             
