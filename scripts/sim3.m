@@ -50,6 +50,7 @@ end
 
 % stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',20);
+stgs.saving.workspace.run = 1;
 % stgs: controller parameters
 stgs.controller.costFunction.weightTaskOrientation            = 1;
 stgs.controller.costFunction.weightTaskMinVariation           = 0;
@@ -64,6 +65,7 @@ stgs.controller.constraints.limitRoM           = 50*pi/180; % [rad]   it can be 
 stgs.desiredShape.fun = @(x,y,t) (y/sqrt(2)-x/sqrt(2)+23/50).^2/2 - (x/sqrt(2)+y/sqrt(2)+23/50).^2/2;
 
 % stgs: visualizer
+stgs.visualizer.run                                      = 0;
 stgs.visualizer.origin.dimCSYS                           = 0.01;
 stgs.visualizer.cameraView.mBodySimulation.values        = [230,40];
 stgs.visualizer.cameraView.initialRotation.run           = 1;
