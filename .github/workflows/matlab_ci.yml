@@ -36,7 +36,7 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           command: |
-            websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/master/scripts/install_robotology_packages.m')
+            websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/onelineinstallswitchtomamba/scripts/install_robotology_packages.m')
             install_robotology_packages
             robotology_setup
 
