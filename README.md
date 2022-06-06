@@ -36,7 +36,7 @@ This paper takes a step to provide humanoid robots with adaptive morphology abil
 1. Clone [`this`](https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers) repository  and [`mystica`](https://github.com/ami-iit/mystica/):
   ```bash
   git clone https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers.git
-  git clone https://github.com/ami-iit/mystica.git
+  git clone https://github.com/ami-iit/mystica.git --branch v2022.06.0
   ```
   [mystica](https://github.com/ami-iit/mystica/) is a matlab library to simulate the kinematics and dynamics of multibody systems.
 
