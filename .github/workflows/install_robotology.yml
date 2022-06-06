@@ -47,7 +47,7 @@ jobs:
             cd robotology-superbuild
             cd scripts
             install_robotology_packages()
-            system("cat  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/robotology-superbuild/scripts/robotology-matlab/condabin/mamba")
+            system("cat  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/robotology-superbuild/scripts/robotology-matlab/condabin/mamba")
             
       # workaround for https://github.com/robotology/robotology-superbuild/issues/64
       # and https://github.com/robotology/idyntree/issues/995
