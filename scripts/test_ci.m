@@ -35,7 +35,7 @@ assert(abs(det(stateKin.getZact('model',model)))>1e-5,'selected motor placement 
 %% Simulation
 
 % stgs: get default values
-stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',4);
+stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',6);
 % stgs: controller parameters
 stgs.controller.costFunction.weightTaskOrientation            = 1;
 stgs.controller.costFunction.weightTaskMinVariation           = 0;
@@ -51,3 +51,6 @@ stgs.desiredShape.fun = @(x,y,t) 5.*x.*y.*cos(y/2);
 
 % run simulation
 data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQuat_0,'nameControllerClass','ControllerKinRel');
+
+assert(max(abs(data.errorPositionNormals(:,end)))<1e-2,'errorPositionNormals is bigger than expected')
+assert(max(abs(data.errorOrientationNormals(:,end)))<10,'errorOrientationNormals is bigger than expected')
