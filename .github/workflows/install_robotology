@@ -10,7 +10,7 @@ on:
             - main
 jobs:
 
-  run-matlab-test:
+  run-matlab-test-rob:
 
     name: Install dependencies and run MATLAB tests
     strategy:
