@@ -36,6 +36,7 @@ jobs:
           cd ..
           cd ..
           git clone https://github.com/ami-iit/mystica.git
+      # mystica is cloned in this location to avoid a too long PREFIX (see https://github.com/robotology/robotology-superbuild/pull/1145)
 
       - name: Install mystica
         uses: matlab-actions/run-command@v1
