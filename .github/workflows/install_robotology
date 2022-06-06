@@ -1,12 +1,13 @@
 name: Test One-line Installation of Robotology MATLAB/Simulink Packages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
       - CI
-
+  pull_request:
+    branches:
+            - main
 jobs:
 
   run-matlab-test:
