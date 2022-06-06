@@ -38,9 +38,7 @@ jobs:
           command: |
             websave('install_robotology_packages.m', 'https://raw.githubusercontent.com/robotology/robotology-superbuild/onelineinstallswitchtomamba/scripts/install_robotology_packages.m')
             install_robotology_packages
-            
             system("cat  /home/runner/work/paper_bergonti_2022_tro_kinematics-control-morphingcovers/paper_bergonti_2022_tro_kinematics-control-morphingcovers/robotology-matlab/condabin/mamba")
-
             robotology_setup
             pos = iDynTree.Position()
             vec = yarp.Vector()
