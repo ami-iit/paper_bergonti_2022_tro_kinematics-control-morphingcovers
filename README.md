@@ -96,3 +96,8 @@ This repository is maintained by:
 | | |
 |:---:|:---:|
 | [<img src="https://github.com/FabioBergonti.png" width="40">](https://github.com/FabioBergonti) | [@FabioBergonti](https://github.com/FabioBergonti) |
+
+<p align="left">
+   <a href="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers" alt="Size" class="center"/></a>
+  <a href="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/actions/workflows/matlab_ci.yml"><img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/actions/workflows/matlab_ci.yml/badge.svg?branch=main" alt="CI"/></a>
+</p>
