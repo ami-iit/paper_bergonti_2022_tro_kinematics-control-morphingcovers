@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        matlab_version: [R2021a, R2021b, latest]
+        matlab_version: [R2021a, R2021b, R2022a]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -34,7 +34,7 @@ jobs:
         run: |
           cd ..
           cd ..
-          git clone https://github.com/ami-iit/mystica.git
+          git clone https://github.com/ami-iit/mystica.git --branch v2022.06.0
       # mystica is cloned in this location to avoid a too long PREFIX (see https://github.com/robotology/robotology-superbuild/pull/1145)
 
       - name: Install mystica
