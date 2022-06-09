@@ -7,7 +7,7 @@ Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid 
 
 
 _F. Bergonti, G. Nava, L. Fiorio, G. L'Erario, D. Pucci "Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots" in 
-Paper Name, vol. 1, no. 1, pp. 1-6, Month Year, doi: 10.1093/ajae/aaq063_
+Paper Name, vol. 1, no. 1, pp. 1-6, Month Year, doi: 10.1109/TRO.2022.3170281_
 
 </div>
 
@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/38210073/169066254-753c29e0-2e25-4599-
 
 <div align="center">
   <a href="#installation"><b>Installation</b></a> |
-  <a href="paper_link_to_do"><b>Paper</b></a> |
+  <a href="paper_link_to_do_"><b>Paper</b></a> |
   <a href="https://youtu.be/kMfXb2xqGn4"><b>Video</b></a>
 </div>
 
@@ -49,9 +49,9 @@ The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.
 ## Usage
 
 This repository stores:
-- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](paper_link_to_do));
-- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](paper_link_to_do));
-- the scripts for reproducing the simulations described in Sec.VI of the [paper](paper_link_to_do).
+- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](paper_link_to_do_));
+- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](paper_link_to_do_));
+- the scripts for reproducing the simulations described in Sec.VI of the [paper](paper_link_to_do_).
 
 **Reproducing simulations results**
 
@@ -79,14 +79,14 @@ If you find the work useful, please consider citing:
 
 ```bibtex
 @ARTICLE{ajae/aaq063,
-  author={Author1, Alfred and Author2, Beatrice},
-  journal={Journal},
-  title={Paper Tile},
+  author={Bergonti, Fabio and Nava, Gabriele and Fiorio, Luca and L’Erario, Giuseppe and Pucci, Daniele},
+  journal={IEEE Transactions on Robotics},
+  title={Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots},
   year={2021},
   volume={1},
   number={1},
   pages={1-6},
-  doi={10.1093/ajae/aaq063}}
+  doi={10.1109/TRO.2022.3170281}}
 ```
 
 ### Maintainer
