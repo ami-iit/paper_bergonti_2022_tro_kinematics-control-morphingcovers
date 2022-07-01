@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/38210073/169066254-753c29e0-2e25-4599-
 
 ## Abstract
 
-This paper takes a step to provide humanoid robots with adaptive morphology abilities. We present a systematic approach for enabling robotic covers to  morph their shape, with an overall size fitting the anthropometric dimensions of a humanoid robot. More precisely, we  present a cover concept consisting of two main components: a skeleton, which is a repetition of a basic element called node; a soft membrane,  which encloses the cover and deforms with its motion. The paper focuses on the cover skeleton, and addresses the challenging problems of: node design; system modeling; motor positioning; and control design of the morphing system. The cover modeling  focuses on kinematics, and a systematic approach for defining the system kinematic constraints is presented. Then, we apply genetic algorithms to find the motor locations so as the morphing cover is fully actuated. Finally, we present control algorithms that allow the cover to morph into a time varying shape. The entire approach is validated by performing kinematic simulations with four different covers of square dimensions and having 3x3, 4x8, 8x8, and 20x20 nodes, respectively. For each cover, we apply the genetic algorithms to choose the motor locations and perform simulations for tracking a desired shape. The simulation results show that the presented approach ensures the covers to track a desired shape with good tracking performances.
+This article takes a step to provide humanoid robots with adaptive morphology abilities. We present a systematic approach for enabling robotic covers to morph their shape, with an overall size fitting the anthropometric dimensions of a humanoid robot. More precisely, we present a cover concept consisting of two main components: a skeleton, which is a repetition of a basic element called node, and a soft membrane, which encloses the cover and deforms with its motion. This article focuses on the cover skeleton and addresses the challenging problems of node design, system modeling, motor positioning, and control design of the morphing system. The cover modeling focuses on kinematics, and a systematic approach for defining the system kinematic constraints is presented. Then, we apply genetic algorithms to find the motor locations so that the morphing cover is fully actuated. Finally, we present control algorithms that allow the cover to morph into a time-varying shape. The entire approach is validated by performing kinematic simulations with four different covers of square dimensions and having 3x3, 4x8, 8x8, and 20x20 nodes, respectively. For each cover, we apply the genetic algorithms to choose the motor locations and perform simulations for tracking a desired shape. The simulation results show that the presented approach ensures the covers to track a desired shape with good tracking performances.
 
 ## Installation
 
@@ -49,9 +49,9 @@ The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.
 ## Usage
 
 This repository stores:
-- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](https://ieeexplore.ieee.org/document/9793615));
-- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](https://ieeexplore.ieee.org/document/9793615));
-- the scripts for reproducing the simulations described in Sec.VI of the [paper](paper_link_to_do_).
+- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](https://ieeexplore.ieee.org/document/9793615);
+- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](https://ieeexplore.ieee.org/document/9793615);
+- the scripts for reproducing the simulations described in Sec.VI of the [paper](https://ieeexplore.ieee.org/document/9793615).
 
 **Reproducing simulations results**
 
@@ -78,7 +78,7 @@ If you open the script, you can modify the `config.simulation_with_noise` parame
 If you find the work useful, please consider citing:
 
 ```bibtex
-@ARTICLE{ajae/aaq063,
+@ARTICLE{9793615,
   author={Bergonti, Fabio and Nava, Gabriele and Fiorio, Luca and L’Erario, Giuseppe and Pucci, Daniele},
   journal={IEEE Transactions on Robotics},
   title={Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots},
