@@ -25,24 +25,32 @@ run(fullfile(src_full_path,'setup_sim.m'))
 config.run_only_controller   = false;
 
 %% Prepare Morphing Cover Model with Motors and its Initial Configuration
+fprintf(' ========= script SIM4 ========= \n')
+fprintf('- script SIM4: start\n')
 
 if config.run_only_controller
     % load model with motors and morphing cover initial configuration.
+    fprintf('- script SIM4: loading model\n')
     load(fullfile(datasets_full_path,'initSim4.mat'),'model','mBodyPosQuat_0')
     stgs.saving.workspace.name = 'initSim4';
 else
     % 1) create model and state object.
+    fprintf('- script SIM4: creating model\n')
     model = mystica.model.getModelCoverSquareLinks('n',4,'m',8,'restConfiguration','cylinder','linkDimension',0.0460,'baseIndex',5,'fixedLinksIndexes',[5,13,21,29],'tform_0_bBase',mystica.rbm.getTformGivenPosRotm([0 0 0.0555]',mystica.rbm.getRotmGivenEul('rz',pi/2)));
     % 2) evaluate morphing cover initial configuration.
+    fprintf('- script SIM4: evaluating initial configuration\n')
     stgs  = mystica.stgs.getDefaultSettingsSimKinAbs(model,'stgs_integrator_limitMaximumTime',0.02);
     stgs.desiredShape.fun = @(x,y,t) 2*x.^2 + 2*y.^2;
     [data,stateKin]  = mystica.runSimKinAbs('model',model,'mBodyPosQuat_0',model.getMBodyPosQuatRestConfiguration,'stgs',stgs,'nameControllerClass','ControllerKinAbs');
     % 3) solve the motors placement problem.
+    fprintf('- script SIM4: solving motors placement problem\n')
     [model,sensitivity,genAlgrthm] = selectMotorPositioning('model',model,'state',stateKin,'stgs',stgs);
     mBodyPosQuat_0 = data.mBodyPosQuat_0(:,end);
 end
 
 %% Simulation
+
+fprintf('- script SIM4: simulating the kinematics\n')
 
 % stgs: get default values
 stgs = mystica.stgs.getDefaultSettingsSimKinRel(model,'startFile',stgs.saving.workspace.name,'stgs_integrator_limitMaximumTime',35);
@@ -82,5 +90,8 @@ data = mystica.runSimKinRel('model',model,'stgs',stgs,'mBodyPosQuat_0',mBodyPosQ
 
 % visualize simulation
 if stgs.visualizer.run
+    fprintf('- script SIM4: running visualizer\n')
     mystica.viz.visualizeKinRel('model',model,'data',data,'stgs',stgs);
 end
+
+fprintf(' ========= SIM4 ended ========= \n')
