@@ -50,8 +50,8 @@ The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.
 ## Usage
 
 This repository stores:
-- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](https://ieeexplore.ieee.org/document/9793615);
-- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](https://ieeexplore.ieee.org/document/9793615);
+- the algorithm for evaluating an optimal motor positioning for structures with closed kinematic loops (see Sec.IV of the [paper](https://ieeexplore.ieee.org/document/9793615));
+- the instantaneous controller that evaluates motors speed to make the cover skeleton moves toward the desired shape (see Sec.V of the [paper](https://ieeexplore.ieee.org/document/9793615));
 - the scripts for reproducing the simulations described in Sec.VI of the [paper](https://ieeexplore.ieee.org/document/9793615).
 
 **Reproducing simulations results**
