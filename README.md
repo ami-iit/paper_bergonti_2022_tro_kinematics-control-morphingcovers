@@ -7,7 +7,7 @@ Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid 
 
 
 _F. Bergonti, G. Nava, L. Fiorio, G. L'Erario, D. Pucci "Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots" in 
-IEEE Transactions on Robotics, vol. 1, no. 1, pp. 1-6, Month Year, doi: 10.1109/TRO.2022.3170281_
+IEEE Transactions on Robotics doi: 10.1109/TRO.2022.3170281_
 
 </div>
 
@@ -34,7 +34,7 @@ This article takes a step to provide humanoid robots with adaptive morphology ab
 
 ## Installation
 
-1. Clone [`this`](https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers) repository  and [`mystica`](https://github.com/ami-iit/mystica/):
+1. Clone the repository and [`mystica`](https://github.com/ami-iit/mystica/):
   ```bash
   git clone https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers.git
   git clone https://github.com/ami-iit/mystica.git --branch v2022.06.0
@@ -43,9 +43,9 @@ This article takes a step to provide humanoid robots with adaptive morphology ab
 
 2. Run in **matlab** the function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) stored in [`mystica`](https://github.com/ami-iit/mystica/):
   ``` matlab
-  install('env_name','imorph')
+  install()
   ```
-The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) downloads [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge). [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge) is a package manager that downloads and configures our dependencies in conda enviroment called `imorph`.
+The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) downloads [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge). [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge) is a package manager that downloads and configures our dependencies in conda enviroment called `mystica`.
 
 ## Usage
 
@@ -67,12 +67,14 @@ run('sim1')
 
 If you open the script, you can modify the `config.simulation_with_noise` parameter deciding whether to apply noise. Instead, the parameter `config.run_only_controller` allows you to choose if you want to run only the controller without evaluating a new motor placement.
 
-| # | mesh | script | result |
-| - | - | - | - |
-| 1 | 3x3   | [sim1.m](scripts/sim1.m) | ![](images/sim1.png) |
-| 2 | 8x8   | [sim2.m](scripts/sim2.m) | ![](images/sim2.png) |
-| 3 | 20x20 | [sim3.m](scripts/sim3.m) | ![](images/sim3.png) |
-| 4 | 4x8   | [sim4.m](scripts/sim4.m) | ![](images/sim4.png) |
+| # | mesh | script  | $t_{run}$* | result |
+| - | - | - | - | - |
+| 1 | 3x3   | [sim1.m](scripts/sim1.m) | 30s  | ![](images/sim1.png) |
+| 2 | 8x8   | [sim2.m](scripts/sim2.m) | 5min | ![](images/sim2.png) |
+| 3 | 20x20 | [sim3.m](scripts/sim3.m) | 2h   | ![](images/sim3.png) |
+| 4 | 4x8   | [sim4.m](scripts/sim4.m) | 3min | ![](images/sim4.png) |
+
+\* $t_{run}$ is the script running time evaluated with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 
 ## Citing this work
 
@@ -83,10 +85,10 @@ If you find the work useful, please consider citing:
   author={Bergonti, Fabio and Nava, Gabriele and Fiorio, Luca and L’Erario, Giuseppe and Pucci, Daniele},
   journal={IEEE Transactions on Robotics},
   title={Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots},
-  year={2021},
-  volume={1},
-  number={1},
-  pages={1-6},
+  year={},
+  volume={},
+  number={},
+  pages={},
   doi={10.1109/TRO.2022.3170281}}
 ```
 
