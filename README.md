@@ -24,6 +24,7 @@ https://user-images.githubusercontent.com/38210073/169066254-753c29e0-2e25-4599-
 <div align="center">
   <a href="#installation"><b>Installation</b></a> |
   <a href="https://ieeexplore.ieee.org/document/9793615"><b>Paper</b></a> |
+  <a href="https://arxiv.org/abs/2207.01025"><b>arXiv</b></a> |
   <a href="https://youtu.be/kMfXb2xqGn4"><b>Video</b></a>
 </div>
 
