@@ -7,7 +7,7 @@ Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid 
 
 
 _F. Bergonti, G. Nava, L. Fiorio, G. L'Erario, D. Pucci "Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots" in 
-IEEE Transactions on Robotics, vol. X, no. X, pp. X-X, MonthXX YearXXXX, doi: 10.1109/TRO.2022.3170281_
+IEEE Transactions on Robotics, vol. 38, no. 5, pp. 3300-3313, October 2022, doi: 10.1109/TRO.2022.3170281_
 
 </div>
 
@@ -86,9 +86,9 @@ If you find the work useful, please consider citing:
   journal={IEEE Transactions on Robotics},
   title={Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots},
   year={2022},
-  volume={X},
-  number={X},
-  pages={X-X},
+  volume={38},
+  number={5},
+  pages={3300-3313},
   doi={10.1109/TRO.2022.3170281}}
 ```
 
