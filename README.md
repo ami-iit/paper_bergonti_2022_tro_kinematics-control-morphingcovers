@@ -58,7 +58,7 @@ This repository stores:
 
 1. If you have completed the [installation procedure](#installation) successfully, a file `setup.m` is generated in `mystica\deps`. You have to open Matlab and run the script `setup.m` to configure MATLABPATH.
 
-2. Run one of the four scripts stored in [this folder](scripts). For example, to reproduce the result of the first scenario you have to run:
+2. Run one of the four scripts stored in [this folder](./scripts). For example, to reproduce the result of the first scenario you have to run:
 ``` matlab
 cd paper_bergonti_2022_tro_kinematics-control-morphingcovers
 cd scripts
@@ -69,10 +69,10 @@ If you open the script, you can modify the `config.simulation_with_noise` parame
 
 | # | mesh | script  | $t_{run}$* | result |
 | - | - | - | - | - |
-| 1 | 3x3   | [sim1.m](scripts/sim1.m) | 30s  | ![](images/sim1.png) |
-| 2 | 8x8   | [sim2.m](scripts/sim2.m) | 5min | ![](images/sim2.png) |
-| 3 | 20x20 | [sim3.m](scripts/sim3.m) | 2h   | ![](images/sim3.png) |
-| 4 | 4x8   | [sim4.m](scripts/sim4.m) | 3min | ![](images/sim4.png) |
+| 1 | 3x3   | [sim1.m](./scripts/sim1.m) | 30s  | ![](images/sim1.png) |
+| 2 | 8x8   | [sim2.m](./scripts/sim2.m) | 5min | ![](images/sim2.png) |
+| 3 | 20x20 | [sim3.m](./scripts/sim3.m) | 2h   | ![](images/sim3.png) |
+| 4 | 4x8   | [sim4.m](./scripts/sim4.m) | 3min | ![](images/sim4.png) |
 
 \* $t_{run}$ is the script running time evaluated with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 
