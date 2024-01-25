@@ -69,10 +69,10 @@ If you open the script, you can modify the `config.simulation_with_noise` parame
 
 | # | mesh | script  | $t_{run}$* | result |
 | - | - | - | - | - |
-| 1 | 3x3   | [sim1.m](./scripts/sim1.m) | 30s  | ![](images/sim1.png) |
-| 2 | 8x8   | [sim2.m](./scripts/sim2.m) | 5min | ![](images/sim2.png) |
-| 3 | 20x20 | [sim3.m](./scripts/sim3.m) | 2h   | ![](images/sim3.png) |
-| 4 | 4x8   | [sim4.m](./scripts/sim4.m) | 3min | ![](images/sim4.png) |
+| 1 | 3x3   | [sim1.m](./scripts/sim1.m) | 30s  | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim1.png" width="600"> |
+| 2 | 8x8   | [sim2.m](./scripts/sim2.m) | 5min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim2.png" width="600"> |
+| 3 | 20x20 | [sim3.m](./scripts/sim3.m) | 2h   | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim3.png" width="600"> |
+| 4 | 4x8   | [sim4.m](./scripts/sim4.m) | 3min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim4.png" width="600"> |
 
 \* $t_{run}$ is the script running time evaluated with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 
