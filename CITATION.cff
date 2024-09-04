@@ -21,7 +21,7 @@ preferred-citation:
     orcid: "https://orcid.org/0000-0002-7600-3203"    
   doi: "10.1109/TRO.2022.3170281"
   journal: "IEEE Transactions on Robotics"
-  month: October
+  month: 10
   start: 3300 # First page number
   end: 3313 # Last page number
   title: "Modeling and Control of Morphing Covers for the Adaptive Morphology of Humanoid Robots"
