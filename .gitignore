@@ -1,0 +1,6 @@
+
+# pixi environments
+.pixi
+*.egg-info
+# folder used by pixi to install source depenencies
+.pixi_ws

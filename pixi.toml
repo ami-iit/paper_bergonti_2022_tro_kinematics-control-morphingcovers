@@ -1,0 +1,41 @@
+[project]
+authors = ["Fabio Bergonti <fabio.bergonti@iit.it>","Silvio Traversaro <silvio@traversaro.it>"]
+# robotology channel is necessary as casadi-matlab-bindings are only available in the robotology channel,
+# conda-forge does not host matlab libraries
+channels = ["conda-forge", "robotology"]
+description = "Add a short description here"
+name = "paper_bergonti_2022_tro_kinematics-control-morphingcovers"
+platforms = ["win-64", "linux-64"]
+version = "0.0.0"
+
+[target.win.activation.env]
+CMAKE_INSTALL_PREFIX = "%CONDA_PREFIX%\\Library"
+# We need to add also the mystica mesh folder to MATLABPATH
+# See https://github.com/ami-iit/mystica/pull/4
+MATLABPATH = "%MATLABPATH%;%CONDA_PREFIX%\\Library\\mex\\+mystica\\meshes"
+
+[target.unix.activation.env]
+CMAKE_INSTALL_PREFIX = "$CONDA_PREFIX"
+# We need to add also the mystica mesh folder to MATLABPATH
+# See https://github.com/ami-iit/mystica/pull/4
+MATLABPATH = "$MATLABPATH;$CONDA_PREFIX/mex/+mystica/meshes"
+
+[tasks]
+# Download and install src deps (in this case a pure MATLAB library, mystica)
+download_src_deps = {cmd = "echo Download src deps && git lfs install && mkdir -p ./.pixi_ws/src && git clone https://github.com/ami-iit/mystica.git --branch v2022.06.0 ./.pixi_ws/src/mystica", outputs=[".pixi_ws/src/mystica/README.md"]}
+# We copy the +mystica MATLAB package to $CMAKE_INSTALL_PREFIX/mex as this directory is already part of MATLABPATH thanks to casadi-matlab-bindings activation scripts
+install_src_deps = {cmd = "echo Install src deps && cp -r ./.pixi_ws/src/mystica/+mystica $CMAKE_INSTALL_PREFIX/mex/+mystica && cp -r ./.pixi_ws/src/mystica/meshes $CMAKE_INSTALL_PREFIX/mex/+mystica/meshes", depends-on = "download_src_deps" }
+# If there is any problem, run uninstall_src_deps to uninstall the source dependencies
+cleanup_src_deps = {cmd = "echo Uninstall src deps && rm -rf $CMAKE_INSTALL_PREFIX/mex/+mystica &&  rm -rf ./.pixi_ws/src"}
+run_scripts = { cmd = "echo test",  depends-on = "install_src_deps"}
+sim1 = {cmd = "matlab -nosplash -nodesktop -batch \"run('./scripts/sim1.m')\"",  depends-on = "install_src_deps"}
+sim2 = {cmd = "matlab -nosplash -nodesktop -batch \"run('./scripts/sim2.m')\"",  depends-on = "install_src_deps"}
+sim3 = {cmd = "matlab -nosplash -nodesktop -batch \"run('./scripts/sim3.m')\"",  depends-on = "install_src_deps"}
+sim4 = {cmd = "matlab -nosplash -nodesktop -batch \"run('./scripts/sim4.m')\"",  depends-on = "install_src_deps"}
+
+[dependencies]
+# The version of mystica installed is only compatible with casadi 3.5.*
+casadi-matlab-bindings = "3.5.*"
+# Ensure that we have git and git lfs as mystica uses git-lfs
+git = "*"
+git-lfs = "*"
