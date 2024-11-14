@@ -1,5 +1,5 @@
 [project]
-authors = ["Fabio Bergonti <fabio.bergonti@iit.it>","Silvio Traversaro <silvio@traversaro.it>"]
+authors = ["Fabio Bergonti <fabio.bergonti@iit.it>"]
 # robotology channel is necessary as casadi-matlab-bindings are only available in the robotology channel,
 # conda-forge does not host matlab libraries
 channels = ["conda-forge", "robotology"]
