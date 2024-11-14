@@ -32,7 +32,21 @@ https://user-images.githubusercontent.com/38210073/169066254-753c29e0-2e25-4599-
 
 This article takes a step to provide humanoid robots with adaptive morphology abilities. We present a systematic approach for enabling robotic covers to morph their shape, with an overall size fitting the anthropometric dimensions of a humanoid robot. More precisely, we present a cover concept consisting of two main components: a skeleton, which is a repetition of a basic element called node, and a soft membrane, which encloses the cover and deforms with its motion. This article focuses on the cover skeleton and addresses the challenging problems of node design, system modeling, motor positioning, and control design of the morphing system. The cover modeling focuses on kinematics, and a systematic approach for defining the system kinematic constraints is presented. Then, we apply genetic algorithms to find the motor locations so that the morphing cover is fully actuated. Finally, we present control algorithms that allow the cover to morph into a time-varying shape. The entire approach is validated by performing kinematic simulations with four different covers of square dimensions and having 3x3, 4x8, 8x8, and 20x20 nodes, respectively. For each cover, we apply the genetic algorithms to choose the motor locations and perform simulations for tracking a desired shape. The simulation results show that the presented approach ensures the covers to track a desired shape with good tracking performances.
 
+## MATLAB
+
+The code in this repo requires MATLAB and the MATLAB's Curve Fitting Toolbox, make sure that you have them installed on your machine.
+
+To quickly install those dependencies with [`mpm`](https://www.mathworks.com/help/install/ug/get-mpm-os-command-line.html), you can run:
+
+~~~
+mpm install --release=R2024b --products=MATLAB Curve_Fitting_Toolbox
+~~~
+
 ## Installation
+
+To install the software in this repo, follow the instructions in either the "Traditional Installation" or the "Pixi installation" section.
+
+### Traditional Installation
 
 1. Clone the repository and [`mystica`](https://github.com/ami-iit/mystica/):
   ```bash
@@ -46,6 +60,26 @@ This article takes a step to provide humanoid robots with adaptive morphology ab
   install()
   ```
 The function [`install()`](https://github.com/ami-iit/mystica/blob/main/install.m) downloads [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge). [`mambaforge`](https://github.com/conda-forge/miniforge#mambaforge) is a package manager that downloads and configures our dependencies in conda enviroment called `mystica`.
+
+### Pixi Installation
+
+If you already have [pixi](https://pixi.sh/) installed in your machine, just run `pixi run matlab` from inside the repo:
+
+~~~bash
+cd paper_bergonti_2022_tro_kinematics-control-morphingcovers
+pixi run matlab
+~~~
+
+This will install all required dependencies, and launch matlab with the dependencies added in the path.
+
+To launch one of experiments of the paper, you can also just run:
+
+~~~bash
+cd paper_bergonti_2022_tro_kinematics-control-morphingcovers
+pixi run sim1
+~~~
+
+where in place of `sim1` you can also run `sim2`, `sim3` or `sim4` depending on the experiment you want to run.
 
 ## Usage
 
@@ -67,12 +101,12 @@ run('sim1')
 
 If you open the script, you can modify the `config.simulation_with_noise` parameter deciding whether to apply noise. Instead, the parameter `config.run_only_controller` allows you to choose if you want to run only the controller without evaluating a new motor placement.
 
-| # | mesh | script  | $t_{run}$* | result |
-| - | - | - | - | - |
-| 1 | 3x3   | [sim1.m](./scripts/sim1.m) | 30s  | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim1.png" width="600"> |
-| 2 | 8x8   | [sim2.m](./scripts/sim2.m) | 5min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim2.png" width="600"> |
-| 3 | 20x20 | [sim3.m](./scripts/sim3.m) | 2h   | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim3.png" width="600"> |
-| 4 | 4x8   | [sim4.m](./scripts/sim4.m) | 3min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim4.png" width="600"> |
+| # | mesh | script | pixi command | $t_{run}$* | result |
+| - | - | - | - | - | - |
+| 1 | 3x3   | [sim1.m](./scripts/sim1.m) | `pixi run sim1` | 30s  | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim1.png" width="600"> |
+| 2 | 8x8   | [sim2.m](./scripts/sim2.m) | `pixi run sim2` | 5min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim2.png" width="600"> |
+| 3 | 20x20 | [sim3.m](./scripts/sim3.m) | `pixi run sim3` | 2h   | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim3.png" width="600"> |
+| 4 | 4x8   | [sim4.m](./scripts/sim4.m) | `pixi run sim4` | 3min | <img src="https://github.com/ami-iit/paper_bergonti_2022_tro_kinematics-control-morphingcovers/blob/main/images/sim4.png" width="600"> |
 
 \* $t_{run}$ is the script running time evaluated with a PC with Intel Xeon Gold 6128 3.40GHz and RAM 128GB.
 
